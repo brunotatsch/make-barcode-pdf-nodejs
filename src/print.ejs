@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório</title>
+
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+
+
+    <style>
+        table {
+            width: 100%;
+        }
+
+        th {
+            text-align: left;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/jsbarcode/3.6.0/JsBarcode.all.min.js"></script>
+    <script>
+        window.onload = function () {
+            JsBarcode(".barcode").init();
+        }
+    </script>
+</head>
+
+<body class="bg-purple-100">
+    <div class="m-8">
+        <h1 class="text-3xl mb-8">Etiqueta Localização</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Localização</th>
+                    <th>Tag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (locations.length> 0) { %>
+                    <% locations.forEach(location=> { %>
+                        <tr>
+                            <td>
+                                <%= location.name %>
+                            </td>
+                            <td>
+                                <%= location.tag %>
+                            </td>
+                        </tr>
+                        <% }); %>
+                            <% } %>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2">
+                        <%=locations.length%> Localizações
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+
+</html>

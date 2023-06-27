@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+</head>
+
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (locations.length> 0) { %>
+        <% locations.forEach(location=> { %>
+          <tr>
+            <td>
+              <svg id="barcode" value="<%= location.name %>"></svg>
+            </td>
+          </tr>
+        <% }); %>
+      <% } %>
+    </tbody>
+  </table>
+
+
+  <svg id="barcode"></svg>
+
+  <script>
+    // Opcional: definir algumas opções para o código de barras
+    JsBarcode("#barcode", "L01.01.01", {
+      format: "CODE128",
+      lineColor: "#0aa",
+      width: 4,
+      height: 40,
+      displayValue: true
+    });
+  </script>
+</body>
+
+</html>
